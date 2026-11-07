@@ -1,5 +1,14 @@
 # Continue here
 
+## Current state (2026-11-07, Claude Code, moved to GitHub Pages)
+- **Live:** https://hussien-talha.github.io/kipling-games/ (public repo https://github.com/Hussien-Talha/kipling-games, branch `main`). Netlify was unreachable for the user (and from this Mac), so the site moved to GitHub Pages.
+- **How it publishes:** `.github/workflows/pages.yml` runs `npm test`, then deploys `public/` to Pages on every push to `main`. Pages source is "GitHub Actions".
+- **Changes for Pages:** all in-site links are relative (site lives under `/kipling-games/`); `404.html` uses `/kipling-games/` absolute paths; share text uses the page's own URL. The print QR (`print/`) now points to the GitHub Pages link and was decoded to confirm. The old Netlify QR/link is obsolete.
+- **Checks run:** `npm test` 15/15 locally and in the first workflow run (run 42387008801: test + deploy succeeded). Live URLs return 200 (home, game, word list, font) and 404 for a missing page. Played a 5-letter round on the live site in the in-app browser: no console errors.
+- **Not covered:** GitHub Pages does not apply the `netlify.toml` security headers. Not tested on a real phone.
+- **Next:** user scans the new QR on a phone; add the official school logo if provided.
+
+
 ## Current state (2026-11-07, Claude Code, redesign)
 - **Objective:** remove the "AI-generated" look (user request) using the design-taste-frontend skill; keep it fun/colourful; keep "Made by Hussien Talha".
 - **Decisions from the user:** no pictures at all (the Kipling *Just So Stories* illustrations were tried and removed: the school is not named after that Kipling). Use the school's own logo colours: navy #0b1a6e + orange #f07a1f. The official logo file was not provided, so the wordmark is typographic; add the logo if they send it.
