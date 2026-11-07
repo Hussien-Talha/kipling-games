@@ -67,5 +67,5 @@ Regenerate the QR codes: `npm run qr`.
 1. Make a new folder in `public/` (for example `public/issue-2-game/`) with its own `index.html`.
    Link `/assets/site.css` for the shared colours and keep the "Made by Hussien Talha" footer.
 2. In `public/index.html`, put the new game in the "This month's game" card and add a
-   "Past games" list linking to `/just-so-words/`.
+   "Past games" list linking to `guess-the-word/`.
 3. Test, then deploy. The printed QR code doesn't change.
