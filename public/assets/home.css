@@ -1,4 +1,4 @@
-/* Games home page: the school newspaper's games sheet lying on the navy desk.
+/* Games home page: the Kipling Chronicles games sheet lying on the navy desk.
    Every section is another piece of the same stationery. */
 .home { --pad: clamp(20px, 4vw, 56px); --gap-section: clamp(120px, 12vw, 200px); }
 
@@ -97,7 +97,7 @@
 .key-near { background: var(--sky); }
 @media (max-width: 1000px) { .moments { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* ---------- a note from the maker: a letter with a tear-off stub ---------- */
+/* ---------- a single paper sheet (used by the 404 page) ---------- */
 .letter-wrap { margin: var(--gap-section) var(--m) 0; display: flex; flex-direction: column; align-items: center; }
 .letter { width: min(640px, 100%); padding: clamp(28px, 6vw, 60px); }
 .letter h2 { margin-bottom: 32px; }

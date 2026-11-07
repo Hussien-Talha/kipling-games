@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Guess the Word · Kipling Chronicles Games</title>
+  <meta name="description" content="Find the hidden word in six guesses. 4, 5 or 6 letters, as many words as you like. A Kipling Chronicles game.">
+  <meta name="theme-color" content="#0b1a6e">
+  <meta property="og:title" content="Guess the Word">
+  <meta property="og:description" content="Can you find the hidden word in six guesses? A Kipling Chronicles puzzle.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/site.css">
+  <link rel="stylesheet" href="./game.css">
+  <link rel="modulepreload" href="./logic.js">
+  <script type="module" src="./game.js"></script>
+</head>
+<body class="game-page">
+  <div class="app">
+    <header class="topbar">
+      <a class="back" href="../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>Games</a>
+      <h1 class="title">Guess the Word</h1>
+      <div class="topbar-actions">
+        <button class="icon-btn" type="button" data-open="help" aria-label="How to play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6" /><circle cx="12" cy="17.2" r=".6" class="fill" /></svg>
+        </button>
+        <button class="icon-btn" type="button" data-open="stats" aria-label="Your stats">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6" /></svg>
+        </button>
+        <button class="icon-btn" type="button" data-open="settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" /><circle cx="16" cy="7" r="2" /><circle cx="10" cy="17" r="2" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="lengths" aria-label="Word length">
+      <button type="button" data-length="4" aria-pressed="false">4 letters</button>
+      <button type="button" data-length="5" aria-pressed="true">5 letters</button>
+      <button type="button" data-length="6" aria-pressed="false">6 letters</button>
+    </nav>
+
+    <main class="play">
+      <p class="streak" id="streak" aria-live="polite"></p>
+      <div class="board" id="board" role="group" aria-label="Guesses"></div>
+    </main>
+
+    <div class="keyboard" id="keyboard" aria-label="Keyboard"></div>
+    <div class="round-actions" id="round-actions" hidden>
+      <p class="round-msg" id="round-msg"></p>
+      <button class="button big" type="button" id="next-btn">Next word</button>
+      <button class="button dim" type="button" id="result-btn">See result</button>
+    </div>
+
+    <footer class="credit">Made by <strong>Hussien Talha</strong> · Kipling Chronicles</footer>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="assertive"></div>
+  <div class="visually-hidden" id="announcer" aria-live="polite"></div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
+  <dialog id="help" class="sheet" aria-labelledby="help-title">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="help-title">How to play</h2>
+    <p>Find the hidden word in <strong>six guesses</strong>. Each guess must be a real word. Press <strong>Enter</strong> to check it.</p>
+    <p>After each guess, the tiles change colour:</p>
+    <div class="example">
+      <div class="mini-row"><span class="mini" data-state="correct">P</span><span class="mini">L</span><span class="mini">A</span><span class="mini">N</span><span class="mini">T</span></div>
+      <p><strong>Orange:</strong> P is in the word, in the right place.</p>
+    </div>
+    <div class="example">
+      <div class="mini-row"><span class="mini">S</span><span class="mini" data-state="present">T</span><span class="mini">O</span><span class="mini">R</span><span class="mini">Y</span></div>
+      <p><strong>Blue:</strong> T is in the word, but in a different place.</p>
+    </div>
+    <div class="example">
+      <div class="mini-row"><span class="mini">C</span><span class="mini">H</span><span class="mini" data-state="absent">A</span><span class="mini">I</span><span class="mini">R</span></div>
+      <p><strong>Grey:</strong> A is not in the word at all.</p>
+    </div>
+    <p>Pick 4, 5 or 6 letters at the top. When you finish a word, tap <strong>Next word</strong> to play another. There's no limit.</p>
+    <p class="small">Each word length keeps its own streak. Your progress is saved on this phone only.</p>
+  </dialog>
+
+  <dialog id="stats" class="sheet" aria-labelledby="stats-title">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="stats-title">Your <span id="stats-length">5</span>-letter stats</h2>
+    <div class="stat-grid">
+      <div><span id="st-played">0</span><small>Played</small></div>
+      <div><span id="st-rate">0</span><small>Win %</small></div>
+      <div><span id="st-streak">0</span><small>Streak</small></div>
+      <div><span id="st-best">0</span><small>Best</small></div>
+    </div>
+    <h3>Guesses needed</h3>
+    <div class="dist" id="st-dist"></div>
+  </dialog>
+
+  <dialog id="settings" class="sheet" aria-labelledby="settings-title">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="settings-title">Settings</h2>
+    <label class="toggle">
+      <span>
+        <strong>Colour-blind help</strong>
+        <small>Adds a shape to each tile: a dot for the right place, a ring for the wrong place.</small>
+      </span>
+      <input type="checkbox" id="opt-symbols">
+    </label>
+    <label class="toggle">
+      <span>
+        <strong>Confetti</strong>
+        <small>A burst of school colours when you find the word.</small>
+      </span>
+      <input type="checkbox" id="opt-confetti" checked>
+    </label>
+  </dialog>
+
+  <dialog id="result" class="sheet result" aria-labelledby="result-title">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="result-title">Brilliant</h2>
+    <p class="result-word">The word was</p>
+    <p class="tiles result-tiles" id="result-word"></p>
+    <div class="stat-grid">
+      <div><span id="rs-played">0</span><small>Played</small></div>
+      <div><span id="rs-rate">0</span><small>Win %</small></div>
+      <div><span id="rs-streak">0</span><small>Streak</small></div>
+      <div><span id="rs-best">0</span><small>Best</small></div>
+    </div>
+    <div class="result-actions">
+      <button class="button" type="button" id="result-next">Next word</button>
+      <button class="button quiet" type="button" id="share-btn">Share result</button>
+    </div>
+  </dialog>
+
+  <noscript><p class="noscript">This game needs JavaScript turned on.</p></noscript>
+</body>
+</html>

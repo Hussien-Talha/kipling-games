@@ -1,4 +1,4 @@
-/* Just So Words: the board on the school's navy, in school colours.
+/* Guess the Word: the board on the school's navy, in school colours.
    Tokens come from /assets/site.css. Square corners; surfaces separate by tone, not lines. */
 .game-page { overscroll-behavior: none; }
 
@@ -28,7 +28,13 @@
 .icon-btn:active { transform: scale(0.9); }
 .icon-btn svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .icon-btn svg .fill { fill: currentColor; stroke: none; }
-@media (max-width: 360px) { .title { font-size: 1.125rem; } .icon-btn { width: 34px; } }
+@media (max-width: 420px) {
+  .topbar { gap: 4px; }
+  .title { font-size: 1.125rem; }
+  .icon-btn { width: 36px; }
+  .back { padding-right: 0; }
+}
+@media (max-width: 340px) { .title { font-size: 1rem; } .icon-btn { width: 32px; } .back { font-size: 0; } }
 
 /* ---- length picker ---- */
 .lengths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0 4px; }

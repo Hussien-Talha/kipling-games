@@ -1,6 +1,6 @@
-# Kipling School Games
+# Kipling Chronicles Games
 
-The games website for the Kipling School newspaper: https://hussien-talha.github.io/kipling-games/
+The games page of the Kipling Chronicles, the Kipling School newspaper: https://hussien-talha.github.io/kipling-games/
 Made by Hussien Talha.
 
 The newspaper prints one QR code that always points at the home page, so the same
@@ -12,9 +12,9 @@ code works in every issue. Each month the home page features that issue's game.
 |---|---|
 | `public/` | The whole website (plain HTML/CSS/JS, no build step). This folder is what gets published. |
 | `public/index.html` | Games home page ("This month's game"). |
-| `public/just-so-words/` | Issue 1 game: guess the hidden 4, 5 or 6-letter word in six tries, unlimited words. |
-| `public/just-so-words/logic.js` | The game rules (scoring guesses, picking words, stats). Unit-tested. |
-| `public/just-so-words/words/*.json` | Generated word lists (`answers` + `allowed` guesses). |
+| `public/guess-the-word/` | Issue 1 game, Guess the Word: find the hidden 4, 5 or 6-letter word in six tries, unlimited words. |
+| `public/guess-the-word/logic.js` | The game rules (scoring guesses, picking words, stats). Unit-tested. |
+| `public/guess-the-word/words/*.json` | Generated word lists (`answers` + `allowed` guesses). |
 | `scripts/build_words.py` | Rebuilds the word lists. |
 | `scripts/blocklist-extra.txt` | Words never accepted at all (on top of a standard rude-words list). |
 | `scripts/answer-exclude.txt` | Words you may type but that are never the hidden answer (names, places, unsuitable topics). |
@@ -28,7 +28,7 @@ blue (`#8fb4ff`) for "right letter, wrong place". Each page is laid out like the
 games sheet: paper panels on the navy. One typeface, Schibsted Grotesk (SIL Open Font Licence),
 is stored in `public/assets/fonts/` so the site loads nothing from other websites. Square corners,
 no gradients, shadows or emoji. Colour tokens live at the top of `public/assets/site.css`.
-The home page can open the game at a length: `/just-so-words/?length=4`.
+The home page can open the game at a length: `/guess-the-word/?length=4`.
 
 Saved progress (streaks, stats, current word) lives only in each player's browser
 (`localStorage`). There are no accounts, no tracking and no third-party requests.

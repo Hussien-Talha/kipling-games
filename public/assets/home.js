@@ -23,7 +23,7 @@ for (const input of document.querySelectorAll('.pick input[name="length"]')) {
 // Entrances: each section's parts rise in turn as the section arrives.
 const groups = [
   ".strip-head h2", ".moments li",
-  ".letter > *", ".stub", ".postcard-message > *", ".postcard-address > *",
+  ".postcard-message > *", ".postcard-address > *",
 ];
 const parts = groups.flatMap((sel) => [...document.querySelectorAll(sel)]);
 if ("IntersectionObserver" in window && !reduced) {

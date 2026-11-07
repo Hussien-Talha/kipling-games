@@ -13,7 +13,7 @@ const notAnswers = fileWords("../scripts/answer-exclude.txt");
 
 for (const length of [4, 5, 6]) {
   test(`${length}-letter word list is valid`, () => {
-    const { answers, allowed } = JSON.parse(read(`../public/just-so-words/words/${length}.json`));
+    const { answers, allowed } = JSON.parse(read(`../public/guess-the-word/words/${length}.json`));
     const allowedSet = new Set(allowed);
 
     assert.ok(answers.length >= 500, "enough answers for months of play");
@@ -34,7 +34,7 @@ for (const length of [4, 5, 6]) {
 test("home page word counts match the word lists", () => {
   const html = read("../public/index.html");
   for (const length of [4, 5, 6]) {
-    const { answers } = JSON.parse(read(`../public/just-so-words/words/${length}.json`));
+    const { answers } = JSON.parse(read(`../public/guess-the-word/words/${length}.json`));
     const m = html.match(new RegExp(`value="${length}" data-count="([\\d,]+)"`));
     assert.ok(m, `picker option for ${length} letters`);
     assert.equal(Number(m[1].replace(/,/g, "")), answers.length);

@@ -1,5 +1,12 @@
 # Continue here
 
+## Current state (2026-11-07, Claude Code, rename)
+- **User changes:** the maker's note section is removed from the home page; the game is renamed **Guess the Word** (folder `public/guess-the-word/`); the school newspaper is called **Kipling Chronicles** (wordmark, titles, credits now say Kipling Chronicles).
+- `public/just-so-words/index.html` only forwards old links to `guess-the-word/`. The saved-progress key is still `kipling-games:just-so-words:v1` on purpose so existing players keep their stats.
+- Live address and QR code are unchanged: https://hussien-talha.github.io/kipling-games/
+- **Checks:** `npm test` 15/15; home inspector 0 FAIL 0 WARN; old address forwards; game top bar fits at 375px.
+
+
 ## Current state (2026-11-07, Claude Code, moved to GitHub Pages)
 - **Live:** https://hussien-talha.github.io/kipling-games/ (public repo https://github.com/Hussien-Talha/kipling-games, branch `main`). Netlify was unreachable for the user (and from this Mac), so the site moved to GitHub Pages.
 - **How it publishes:** `.github/workflows/pages.yml` runs `npm test`, then deploys `public/` to Pages on every push to `main`. Pages source is "GitHub Actions".

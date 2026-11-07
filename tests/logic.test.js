@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   evaluateGuess, isWin, keyboardStates, validateGuess, pickNextWord,
   emptyStats, recordResult, winRate, shareText, CORRECT as C, PRESENT as P, ABSENT as A,
-} from "../public/just-so-words/logic.js";
+} from "../public/guess-the-word/logic.js";
 
 test("evaluateGuess marks exact, misplaced and missing letters", () => {
   assert.deepEqual(evaluateGuess("crane", "crane"), [C, C, C, C, C]);
@@ -96,7 +96,7 @@ test("shareText shows the grid and credit but never the answer", () => {
     guesses: ["react", "crane"], answer: "crane", won: true, length: 5, streak: 3,
     url: "https://kipling-games.netlify.app",
   });
-  assert.match(text, /Just So Words · 5 letters · 2\/6/);
+  assert.match(text, /Guess the Word · 5 letters · 2\/6/);
   assert.match(text, /🟧🟧🟧🟧🟧/); // taste-skill-ignore
   assert.match(text, /Streak: 3/);
   assert.match(text, /Made by Hussien Talha/);

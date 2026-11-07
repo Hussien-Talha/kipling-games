@@ -1,4 +1,4 @@
-"""Build the Just So Words word lists.
+"""Build the Guess the Word word lists.
 
 Run once (or whenever the lists should change):
 
@@ -6,7 +6,7 @@ Run once (or whenever the lists should change):
     npm install
     .venv/bin/python scripts/build_words.py
 
-Outputs public/just-so-words/words/{4,5,6}.json, each shaped as
+Outputs public/guess-the-word/words/{4,5,6}.json, each shaped as
 {"answers": [...], "allowed": [...]}.
 
 - allowed: every plain English word of that length (an-array-of-english-words),
@@ -22,7 +22,7 @@ from pathlib import Path
 from wordfreq import zipf_frequency
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_DIR = ROOT / "public" / "just-so-words" / "words"
+OUT_DIR = ROOT / "public" / "guess-the-word" / "words"
 
 ANSWER_COUNTS = {4: 700, 5: 1200, 6: 1000}
 MIN_ZIPF = 3.0  # roughly: appears at least once per million words

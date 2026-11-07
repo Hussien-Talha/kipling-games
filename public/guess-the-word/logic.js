@@ -1,4 +1,4 @@
-// Pure game rules for Just So Words. No DOM or storage here, so it can be
+// Pure game rules for Guess the Word. No DOM or storage here, so it can be
 // unit-tested with Node (see tests/logic.test.js).
 
 export const LENGTHS = [4, 5, 6];
@@ -126,7 +126,7 @@ export function shareText({ guesses, answer, won, length, streak, url }) {
   const grid = guesses
     .map((g) => evaluateGuess(g, answer).map((s) => SHARE_SQUARES[s]).join(""))
     .join("\n");
-  const lines = [`Just So Words · ${length} letters · ${score}`, grid];
+  const lines = [`Guess the Word · ${length} letters · ${score}`, grid];
   if (streak > 1) lines.push(`Streak: ${streak}`);
   lines.push(`Play at ${url}`, "Made by Hussien Talha");
   return lines.join("\n");

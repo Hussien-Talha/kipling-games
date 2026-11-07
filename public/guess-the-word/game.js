@@ -1,10 +1,11 @@
-// Just So Words: screen, input and saved progress. Rules live in logic.js.
+// Guess the Word: screen, input and saved progress. Rules live in logic.js.
 import {
   LENGTHS, MAX_GUESSES, evaluateGuess, isWin, keyboardStates, validateGuess,
   pickNextWord, emptyStats, recordResult, winRate, shareText,
 } from "./logic.js";
 import { launchConfetti } from "./confetti.js";
 
+// Key kept from the game's first name so players keep their streaks and stats.
 const STORAGE_KEY = "kipling-games:just-so-words:v1";
 const STATE_LABEL = { correct: "right spot", present: "wrong spot", absent: "not in the word" };
 const WIN_TITLES = ["Genius!", "Magnificent!", "Brilliant!", "Splendid!", "Great job!", "Phew, just in time!"];
@@ -63,7 +64,7 @@ function normalise(raw) {
 
 const saved = loadSaved();
 const state = normalise(saved);
-// The home page can open the game at a chosen length: /just-so-words/?length=4
+// The home page can open the game at a chosen length: /guess-the-word/?length=4
 const askedLength = Number(new URLSearchParams(location.search).get("length"));
 if (LENGTHS.includes(askedLength)) state.length = askedLength;
 if (location.search) history.replaceState(null, "", location.pathname); // later reloads keep the player's own choice

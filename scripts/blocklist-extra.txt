@@ -1,4 +1,4 @@
-# Extra words kept out of Just So Words (answers and guesses), on top of the
+# Extra words kept out of Guess the Word (answers and guesses), on top of the
 # naughty-words list. One word per line. Add anything a teacher flags.
 # Violence / weapons
 kill
