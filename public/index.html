@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kipling School Games</title>
+  <meta name="description" content="The games page of the Kipling School newspaper. This month: Just So Words, a word-guessing game you can play as often as you like.">
+  <meta name="theme-color" content="#0b1a6e">
+  <meta property="og:title" content="Kipling School Games">
+  <meta property="og:description" content="This month's game from the Kipling School newspaper: Just So Words.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/home.css">
+  <script type="module" src="assets/home.js"></script>
+</head>
+<body class="home">
+  <div class="hero" id="top">
+    <main class="sheet hero-sheet">
+      <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="hero-body">
+        <p class="wordmark" aria-label="Kipling School Games"><span class="wordmark-school" aria-hidden="true">Kipling School</span><span class="tiles" aria-hidden="true"><span class="t-hit">G</span><span class="t-ink">A</span><span class="t-near">M</span><span class="t-ink">E</span><span class="t-hit">S</span></span></p>
+        <h1>Find the word, just&nbsp;so.</h1>
+        <p class="lead">Just So Words is this month's game from the school newspaper: guess the hidden word in six tries, then play another.</p>
+
+        <form class="pick" action="just-so-words/" method="get">
+          <fieldset>
+            <legend>How many letters?</legend>
+            <div class="pick-options">
+              <label><input type="radio" name="length" value="4" data-count="700"><span>4</span></label>
+              <label><input type="radio" name="length" value="5" data-count="1,200" checked><span>5</span></label>
+              <label><input type="radio" name="length" value="6" data-count="1,000"><span>6</span></label>
+            </div>
+          </fieldset>
+          <p class="pick-count" id="pick-count" aria-live="polite"><strong>1,200</strong> five-letter words to find</p>
+          <button class="button" type="submit">Play Just So Words</button>
+        </form>
+
+        <nav class="hero-links" aria-label="On this page">
+          <a href="#how">How it works</a>
+          <a href="#note">A note from the maker</a>
+        </nav>
+      </div>
+    </main>
+
+    <!-- A finished round, printed large: the game itself is the picture. -->
+    <figure class="board-panel">
+      <svg class="board-art" viewBox="0 0 524 630" role="img" aria-label="A finished round of Just So Words: the guesses words, shape and paled, then paper with every letter right, in four tries.">
+          <g class="b-tile b-miss"><rect x="0" y="0" width="100" height="100"/><text x="50.0" y="70.0">W</text></g>
+          <g class="b-tile b-miss"><rect x="106" y="0" width="100" height="100"/><text x="156.0" y="70.0">O</text></g>
+          <g class="b-tile b-near"><rect x="212" y="0" width="100" height="100"/><text x="262.0" y="70.0">R</text></g>
+          <g class="b-tile b-miss"><rect x="318" y="0" width="100" height="100"/><text x="368.0" y="70.0">D</text></g>
+          <g class="b-tile b-miss"><rect x="424" y="0" width="100" height="100"/><text x="474.0" y="70.0">S</text></g>
+          <g class="b-tile b-miss"><rect x="0" y="106" width="100" height="100"/><text x="50.0" y="176.0">S</text></g>
+          <g class="b-tile b-miss"><rect x="106" y="106" width="100" height="100"/><text x="156.0" y="176.0">H</text></g>
+          <g class="b-tile b-near"><rect x="212" y="106" width="100" height="100"/><text x="262.0" y="176.0">A</text></g>
+          <g class="b-tile b-near"><rect x="318" y="106" width="100" height="100"/><text x="368.0" y="176.0">P</text></g>
+          <g class="b-tile b-near"><rect x="424" y="106" width="100" height="100"/><text x="474.0" y="176.0">E</text></g>
+          <g class="b-tile b-hit"><rect x="0" y="212" width="100" height="100"/><text x="50.0" y="282.0">P</text></g>
+          <g class="b-tile b-hit"><rect x="106" y="212" width="100" height="100"/><text x="156.0" y="282.0">A</text></g>
+          <g class="b-tile b-miss"><rect x="212" y="212" width="100" height="100"/><text x="262.0" y="282.0">L</text></g>
+          <g class="b-tile b-hit"><rect x="318" y="212" width="100" height="100"/><text x="368.0" y="282.0">E</text></g>
+          <g class="b-tile b-miss"><rect x="424" y="212" width="100" height="100"/><text x="474.0" y="282.0">D</text></g>
+          <g class="b-tile b-hit"><rect x="0" y="318" width="100" height="100"/><text x="50.0" y="388.0">P</text></g>
+          <g class="b-tile b-hit"><rect x="106" y="318" width="100" height="100"/><text x="156.0" y="388.0">A</text></g>
+          <g class="b-tile b-hit"><rect x="212" y="318" width="100" height="100"/><text x="262.0" y="388.0">P</text></g>
+          <g class="b-tile b-hit"><rect x="318" y="318" width="100" height="100"/><text x="368.0" y="388.0">E</text></g>
+          <g class="b-tile b-hit"><rect x="424" y="318" width="100" height="100"/><text x="474.0" y="388.0">R</text></g>
+          <rect class="b-empty" x="0" y="424" width="100" height="100"/>
+          <rect class="b-empty" x="106" y="424" width="100" height="100"/>
+          <rect class="b-empty" x="212" y="424" width="100" height="100"/>
+          <rect class="b-empty" x="318" y="424" width="100" height="100"/>
+          <rect class="b-empty" x="424" y="424" width="100" height="100"/>
+          <rect class="b-empty" x="0" y="530" width="100" height="100"/>
+          <rect class="b-empty" x="106" y="530" width="100" height="100"/>
+          <rect class="b-empty" x="212" y="530" width="100" height="100"/>
+          <rect class="b-empty" x="318" y="530" width="100" height="100"/>
+          <rect class="b-empty" x="424" y="530" width="100" height="100"/>
+        </svg>
+      <figcaption>Solved in four: the word was <strong>paper</strong>.</figcaption>
+    </figure>
+  </div>
+
+  <section class="sheet strip" id="how" aria-labelledby="how-title">
+    <div class="strip-head">
+      <h2 id="how-title">From the paper to your phone</h2>
+    </div>
+    <ol class="moments">
+      <li>
+        <p class="tiles moment-tiles" aria-hidden="true"><span class="t-ink">G</span><span class="t-ink">A</span><span class="t-ink">M</span><span class="t-ink">E</span><span class="t-ink">S</span></p>
+        <h3>Open the games page</h3>
+        <p>Every issue of the school newspaper has a games page, and every issue brings a new game.</p>
+      </li>
+      <li>
+        <p class="tiles moment-tiles" aria-hidden="true"><span class="t-near">S</span><span class="t-near">C</span><span class="t-near">A</span><span class="t-near">N</span></p>
+        <h3>Scan the code</h3>
+        <p>Point your phone's camera at the QR code. The game opens in your browser, with no app and no sign-up.</p>
+      </li>
+      <li>
+        <p class="tiles moment-tiles" aria-hidden="true"><span class="t-blank">4</span><span class="t-ink">5</span><span class="t-blank">6</span></p>
+        <h3>Pick a length</h3>
+        <p>Choose 4, 5 or 6 letters. Each length keeps its own streak, so you can get good at all three.</p>
+      </li>
+      <li>
+        <p class="tiles moment-tiles" aria-hidden="true"><span class="t-hit">G</span><span class="t-near">U</span><span class="t-miss">E</span><span class="t-hit">S</span><span class="t-near">S</span></p>
+        <h3>Six guesses</h3>
+        <p>Type a real word and press Enter. <b class="key-hit">Orange</b> is the right letter in the right place, <b class="key-near">blue</b> is the right letter in the wrong place.</p>
+      </li>
+      <li>
+        <p class="tiles moment-tiles" aria-hidden="true"><span class="t-hit">A</span><span class="t-hit">G</span><span class="t-hit">A</span><span class="t-hit">I</span><span class="t-hit">N</span></p>
+        <h3>Then another</h3>
+        <p>There's no one-a-day limit. Finish a word, tap Next word and keep going for as long as you like.</p>
+      </li>
+      <li>
+        <p class="tiles moment-tiles" aria-hidden="true"><span class="t-ink">N</span><span class="t-ink">E</span><span class="t-ink">X</span><span class="t-ink">T</span></p>
+        <h3>A new game next issue</h3>
+        <p>The next paper brings a different game to this same page, so the QR code keeps working.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="letter-wrap" id="note" aria-labelledby="note-title">
+    <article class="sheet letter">
+      <h2 id="note-title">A note from the maker</h2>
+      <p>I made Just So Words for the games page of our school newspaper, so you can carry a puzzle home in your pocket.</p>
+      <p>"Just so" means exactly right, which is what a tile turns when you find a letter's place.</p>
+      <p>The word lists hold about 2,900 everyday words. I went through them so that names and anything unsuitable for school are left out. If a word seems wrong, or one is missing, tell the newspaper team and I'll fix it.</p>
+      <p>Your scores stay on your own phone. The game doesn't ask for your name and doesn't collect anything.</p>
+      <p class="signature">Hussien Talha</p>
+      <p class="role">Made the game for Kipling School Games</p>
+    </article>
+    <aside class="sheet stub" aria-label="Next game">
+      <p><strong>Next game:</strong> in the next issue of the school newspaper.</p>
+    </aside>
+  </section>
+
+  <footer class="postcard" aria-labelledby="footer-title">
+    <svg class="scallops" viewBox="0 0 1200 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24V12Q50 -12 100 12T200 12T300 12T400 12T500 12T600 12T700 12T800 12T900 12T1000 12T1100 12T1200 12V24Z"/></svg>
+    <div class="postcard-body">
+      <div class="postcard-message">
+        <h2 id="footer-title">See you next issue</h2>
+        <p>Keep the QR code from this month's paper. It always opens this page, and this page always has the newest game.</p>
+      </div>
+      <div class="postcard-address">
+        <span class="stamp" aria-hidden="true"><span>K</span><span>S</span><span></span><span></span></span>
+        <ul>
+          <li><a href="just-so-words/">Play Just So Words</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#note">A note from the maker</a></li>
+          <li><a href="#top">Back to the top</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="imprint">Made by Hussien Talha · Kipling School Games</p>
+  </footer>
+</body>
+</html>

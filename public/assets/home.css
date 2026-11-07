@@ -1,0 +1,166 @@
+/* Games home page: the school newspaper's games sheet lying on the navy desk.
+   Every section is another piece of the same stationery. */
+.home { --pad: clamp(20px, 4vw, 56px); --gap-section: clamp(120px, 12vw, 200px); }
+
+.sheet { background: var(--paper); color: var(--ink); }
+
+/* ---------- hero: the printed sheet beside a finished round ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px;
+  padding: var(--m); min-height: 100svh; align-items: start;
+}
+.hero-sheet { display: flex; flex-direction: column; min-height: calc(100svh - 2 * var(--m)); }
+.hero-body {
+  flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: clamp(28px, 5vh, 56px) var(--pad) 28px;
+}
+
+.wordmark { margin: 0 0 clamp(28px, 6vh, 56px); display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.wordmark-school { font-weight: 800; font-size: var(--step-lead); letter-spacing: -0.04em; line-height: 1; }
+.wordmark .tiles { font-size: clamp(1.5rem, 2.5vw, 2.25rem); gap: 5px; }
+.wordmark .tiles > span { animation: flip-in 0.6s var(--ease) both; }
+.wordmark .tiles > span:nth-child(2) { animation-delay: 0.08s; }
+.wordmark .tiles > span:nth-child(3) { animation-delay: 0.16s; }
+.wordmark .tiles > span:nth-child(4) { animation-delay: 0.24s; }
+.wordmark .tiles > span:nth-child(5) { animation-delay: 0.32s; }
+@keyframes flip-in { from { transform: rotateX(90deg); opacity: 0; } }
+
+.hero h1 {
+  margin: 0 0 28px; max-width: 14ch; text-wrap: balance;
+  font-weight: 800; font-size: var(--step-display); line-height: 0.9; letter-spacing: -0.055em;
+}
+.lead { margin: 0 0 32px; max-width: 36ch; }
+
+.pick { display: flex; flex-direction: column; align-items: center; }
+.pick fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.pick legend { font-weight: 600; margin: 0 auto 12px; padding: 0; }
+.pick-options { display: flex; gap: 8px; justify-content: center; }
+.pick-options label { position: relative; cursor: pointer; }
+.pick-options input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.pick-options span {
+  display: grid; place-items: center; width: 64px; height: 64px;
+  background: var(--paper-2); font-weight: 800; font-size: var(--step-lead);
+  transition: background-color 0.2s, color 0.2s, transform 0.15s var(--ease);
+}
+.pick-options label:hover span { background: var(--paper-3); }
+.pick-options input:checked + span { background: var(--navy); color: var(--paper); }
+.pick-options label:active span { transform: scale(0.94); }
+.pick-options input:focus-visible + span { outline: 3px solid var(--orange); outline-offset: 3px; }
+.pick-count { margin: 14px 0 22px; }
+
+.hero-links {
+  margin-top: auto; padding-top: 32px; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px 28px; font-weight: 600; font-size: var(--step-small);
+}
+.hero-links a, .postcard-address a { text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.hero-links a:hover, .postcard-address a:hover { color: var(--orange-2); }
+
+/* The game itself, printed large: a finished round on a navy panel. */
+.board-panel {
+  position: sticky; top: var(--m); margin: 0; height: calc(100svh - 2 * var(--m));
+  background: var(--navy-2); container-type: size;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4cqh;
+}
+.board-art { width: min(78cqw, 72cqh * 5 / 6); height: auto; overflow: visible; }
+.board-art text { font: 800 56px var(--font); text-anchor: middle; }
+.b-hit rect { fill: var(--orange); } .b-hit text { fill: var(--navy); }
+.b-near rect { fill: var(--sky); } .b-near text { fill: var(--navy); }
+.b-miss rect { fill: var(--grey); } .b-miss text { fill: #fff; }
+.b-empty { fill: var(--navy-3); }
+.b-tile { transform-box: fill-box; transform-origin: center; animation: flip-in 0.5s var(--ease) both; }
+.board-panel figcaption { color: var(--paper); font-size: var(--step-body); }
+
+/* ---------- how it works: a long tear-off strip ---------- */
+.strip { margin: var(--gap-section) var(--m) 0; padding: 28px 0 64px; }
+.strip::before { content: ""; display: block; margin: 0 var(--pad) 36px; border-top: 6px dotted var(--navy); }
+.strip-head { padding: 0 var(--pad); }
+.strip h2, .letter h2, .postcard h2 {
+  margin: 0; font-weight: 800; font-size: var(--step-head); line-height: 0.95; letter-spacing: -0.05em; text-wrap: balance;
+}
+/* Six moments; each one's tiles spell what happens. */
+.moments {
+  list-style: none; margin: 48px 0 0; padding: 0 var(--pad);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 72px clamp(24px, 3vw, 48px);
+}
+.moments li { display: flex; flex-direction: column; }
+.moment-tiles { margin: 0 0 24px; font-size: clamp(1.5rem, 2.4vw, 2.25rem); }
+.moments li:hover .moment-tiles > span { transform: translateY(-4px); }
+.moment-tiles > span { transition: transform 0.25s var(--ease); }
+.moment-tiles > span:nth-child(2) { transition-delay: 0.03s; }
+.moment-tiles > span:nth-child(3) { transition-delay: 0.06s; }
+.moment-tiles > span:nth-child(4) { transition-delay: 0.09s; }
+.moment-tiles > span:nth-child(5) { transition-delay: 0.12s; }
+.moments h3 { margin: 0 0 8px; font-weight: 800; font-size: var(--step-lead); line-height: 1.1; letter-spacing: -0.03em; }
+.moments p:not(.moment-tiles) { margin: 0; max-width: 34ch; }
+.key-hit, .key-near { padding: 0 0.2em; }
+.key-hit { background: var(--orange); }
+.key-near { background: var(--sky); }
+@media (max-width: 1000px) { .moments { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- a note from the maker: a letter with a tear-off stub ---------- */
+.letter-wrap { margin: var(--gap-section) var(--m) 0; display: flex; flex-direction: column; align-items: center; }
+.letter { width: min(640px, 100%); padding: clamp(28px, 6vw, 60px); }
+.letter h2 { margin-bottom: 32px; }
+.letter p { margin: 0 0 1em; max-width: 60ch; }
+.letter .signature { margin: 32px 0 0; font-style: italic; font-weight: 600; font-size: var(--step-lead); }
+.letter .role { margin: 0; font-size: var(--step-small); color: var(--ink-soft); }
+.stub {
+  width: min(640px, 100%); padding: 20px clamp(28px, 6vw, 60px) 24px;
+  border-top: 6px dotted var(--navy);
+}
+.stub p { margin: 0; }
+
+/* ---------- footer: the back of the postcard ---------- */
+.postcard {
+  position: relative; margin: var(--gap-section) var(--m) var(--m);
+  background: var(--paper); color: var(--ink); padding: clamp(40px, 5vw, 64px) var(--pad) 24px;
+}
+.scallops { position: absolute; left: 0; top: -23px; width: 100%; height: 24px; fill: var(--paper); }
+.postcard-body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.postcard-message p { margin: 20px 0 0; max-width: 40ch; }
+.postcard-address { display: flex; justify-content: space-between; align-items: start; gap: 24px; }
+.postcard-address ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; order: 1; }
+.postcard-address a { font-weight: 600; }
+/* The stamp: four school-colour squares, perforated. */
+.stamp {
+  order: 2; flex: none; width: 88px; height: 88px; padding: 4px; border: 6px dotted var(--paper-3);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px; transform: rotate(3deg);
+  font-weight: 800; font-size: 1.25rem; line-height: 1;
+}
+.stamp span { display: grid; place-items: center; }
+.stamp span:nth-child(1) { background: var(--orange); color: var(--navy); }
+.stamp span:nth-child(2) { background: var(--navy); color: var(--paper); }
+.stamp span:nth-child(3) { background: var(--sky); }
+.stamp span:nth-child(4) { background: var(--orange); }
+.imprint { margin: 48px 0 0; text-align: center; font-size: var(--step-small); font-weight: 600; }
+
+/* ---------- entrances (only when the script runs) ---------- */
+.js .reveal { opacity: 0; transform: translateY(24px); }
+.js .reveal.in { opacity: 1; transform: none; transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+
+/* ---------- phone ---------- */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-sheet { min-height: 0; }
+  .hero-body { padding-top: 24px; }
+  .stripe { height: 32px; }
+  .wordmark { margin-bottom: 24px; gap: 8px; }
+  .wordmark .tiles { font-size: 1.25rem; gap: 4px; }
+  .hero h1 { margin-bottom: 16px; }
+  .lead { margin-bottom: 20px; }
+  .pick-options span { width: 56px; height: 56px; }
+  .pick-count { margin: 10px 0 16px; }
+  .board-panel { position: relative; top: 0; height: 120vw; max-height: 560px; }
+  .moments { grid-template-columns: 1fr; gap: 48px; }
+  .postcard-body { grid-template-columns: 1fr; gap: 32px; }
+  .stamp { width: 72px; height: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- 404 ---------- */
+.lost { min-height: 100svh; justify-content: center; margin-top: 0; }
+.lost .tiles { font-size: 1.75rem; margin: 0 0 24px; }
+.lost h1 { margin: 0 0 16px; font-weight: 800; font-size: var(--step-head); line-height: 0.95; letter-spacing: -0.05em; }

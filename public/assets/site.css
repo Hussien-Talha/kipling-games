@@ -1,0 +1,97 @@
+/* Kipling School Games: shared tokens, in the school's own colours.
+   Navy is the desk, paper is the printed sheet, orange is the school's accent.
+   Square corners everywhere, like a printed page. */
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/schibsted-grotesk-latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/schibsted-grotesk-italic-latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --navy: #0b1a6e;      /* Kipling School navy */
+  --navy-2: #15267f;    /* one tone step up, for panels on the navy */
+  --navy-3: #22348f;
+  --orange: #f07a1f;    /* Kipling School orange */
+  --orange-2: #d9640c;
+  --sky: #8fb4ff;       /* "right letter, wrong place" */
+  --grey: #767b8f;      /* "not in the word" */
+  --paper: #f1f2f4;
+  --paper-2: #e0e2e8;
+  --paper-3: #c9cdd6;
+  --ink: #0b1a6e;       /* text on paper is the school navy */
+  --ink-soft: #3d4778;
+
+  --step-small: 0.875rem;
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-display: clamp(2.75rem, 0.5rem + 5.6vw, 6rem);
+
+  --font: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --m: clamp(12px, 2vw, 24px);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font: 400 var(--step-body) / 1.45 var(--font);
+  letter-spacing: -0.01em;
+  background: var(--navy);
+  color: var(--paper);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button, input { font: inherit; letter-spacing: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+::selection { background: var(--orange); color: var(--navy); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* One button shape for the whole site: a flat orange rectangle with navy type. */
+.button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  min-height: 52px; padding: 0 1.5rem; border: 0; border-radius: 0;
+  background: var(--orange); color: var(--navy);
+  font: 800 1.1875rem/1 var(--font); letter-spacing: -0.02em;
+  text-decoration: none; cursor: pointer;
+  transition: transform 0.15s var(--ease), background-color 0.15s;
+}
+.button:hover { background: var(--orange-2); }
+.button:active { transform: translateY(2px); }
+.button.quiet { background: var(--paper-2); color: var(--ink); }
+.button.quiet:hover { background: var(--paper-3); }
+
+/* The school stripe: alternating navy and orange bars across the top of the sheet. */
+.stripe { display: flex; height: 56px; margin: 12px 12px 0; }
+.stripe span { flex: 1 1 0; background: var(--navy); }
+.stripe span:nth-child(even) { background: var(--orange); }
+
+/* Letter tiles */
+.tiles { display: flex; gap: 6px; }
+.tiles > span {
+  display: grid; place-items: center; width: 1.6em; height: 1.6em;
+  font-weight: 800; text-transform: uppercase; line-height: 1;
+}
+.t-hit { background: var(--orange); color: var(--navy); }
+.t-near { background: var(--sky); color: var(--navy); }
+.t-miss { background: var(--grey); color: #fff; }
+.t-ink { background: var(--navy); color: var(--paper); }
+.t-blank { background: var(--paper-2); color: var(--navy); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

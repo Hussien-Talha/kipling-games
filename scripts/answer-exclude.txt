@@ -1,0 +1,18 @@
+# Words that are fine to TYPE as a guess but should never be the hidden answer:
+# names, places, brands, archaic or awkward words, and topics that don't suit a
+# school game. One word per line.
+# Names / places / brands
+alan anna brad carl cole dale dean earl emma eric hart hong jake jane jeff josh kent khan kyle luke marc mary mike rick ruth shaw tony wade york ford
+barry benny betty billy bobby bowie brent burke chang chevy clint colin costa donna dover drake harry henry hogan honda jenny jerry jimmy kelly kerry laura lewis malik maria molly monte nancy pedro peggy perry peter ralph randy riley roger sally sammy silva sonny terry tommy weber welsh japan china chile dutch swiss cisco adobe yahoo lance homer mason frank chuck sandy robin billy smith ariel stein
+alison bailey batman berlin boston brazil burton butler canada carter cooper franco geneva german graham guinea harper jordan lionel manila martin miller morgan morris murphy nelson newton palmer panama parker potter russia soviet steven surrey travis tucker turner walker warner warren wright willie python sierra easter
+# Abbreviations / archaic / slang
+anti semi sept thee thou cant wont prof nope tech coke admin login psych inter quasi circa mater
+# Not right for a school game
+babe booty bust jerk liar oral evil riot cult coup gang jail pope dude
+jihad lynch obese fetus urine vomit bowel pagan deity psalm rabbi prick trump willy nasty sober fatty manly mommy daddy tumor curse cigar sewer slain toxic thief theft fraud siege skull venom virus chick
+virgin racist racism racial sniper weapon bullet bomber felony coffin burial prison police poison liquor mosque church priest lethal mortal hatred insane insult filthy punish savage trauma zombie toilet gamble tattoo thrust kidney autism asthma cancer asylum misery sorrow plague horror creepy guilty revolt regime arrest murder
+# Second review pass
+chad joey tory troy wang yang unto lame nova amen
+arson buffy cocky hubby kappa latex levin paolo penal renal privy sloan swine torah twain wally wigan fetal natal basal filth papal gland crook taboo
+addict bikini ghetto herein stella warsaw sultan tinder scotch stigma coward ransom
+dope butch crore dixie kraft tammy fowler holden corpus
